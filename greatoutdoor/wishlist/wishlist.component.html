@@ -1,0 +1,24 @@
+<div class="container" >
+    <div class="row mt-4">
+      <h5>WishList</h5>
+        <div class="col-md-6 col-lg-4 col-sm-12 mt-3 mb-3" *ngFor="let p of product;let i=index">
+            <div class="card" >
+              <h5 class="card-header text-center bg-dark text-light">{{p.pname}}</h5>
+                <div class="card-body">
+                  <img src={{p.image}} class="card-img-top" alt="..." width="150" height="300" style="border:1px solid black">
+                  
+                  <div class="card-text">
+                    id:{{p.pid}}<br>
+                    Price : {{p.price}}<br>
+                    Color : {{p.colour}}<br>
+                    category:{{p.category}}<br>
+                    Manufacturer : {{p.manufacturer}}<br>
+                    Specification :{{p.specification}}<br>
+                  </div>
+                  <button class="btn btn-success btn-sm" (click)="addToCart(p)">Add To Cart</button>&nbsp;
+                  <button class="btn btn-success btn-sm" (click)="onClickDelte(p.pid)" >Delete from WishList</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
