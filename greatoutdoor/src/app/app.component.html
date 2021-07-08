@@ -1,18 +1,34 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark " *ngIf="currentUser">
+  <div class="navbar-nav ">
       <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" routerLink="/product" *ngIf="isAdmin">Products</a>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" *ngIf="isAdmin">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/product">All Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/adminelctronics">Electronics Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/adminfashion">Fashion Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/adminhomeappliance">Home Appliance Products</a></li>
+          </ul>
+        </li>
+      </ul> 
       <a class="nav-item nav-link" routerLink="/report" *ngIf="isAdmin">Reports</a>
       <a class="nav-item nav-link" routerLink="/order" *ngIf="isAdmin">Orders</a>
       <a class="nav-item nav-link" routerLink="/user" *ngIf="isAdmin">Users</a>
-      <a class="nav-item nav-link" routerLink="/cart" *ngIf="isUser">Cart</a>
       <a class="nav-item nav-link" routerLink="/electronics" *ngIf="isUser">Electronics</a>
       <a class="nav-item nav-link" routerLink="/fashion" *ngIf="isUser">Fashion</a>
-      <a class="nav-item nav-link" routerLink="/homeappliance" *ngIf="isUser">Hpme Appliances</a>
+      <a class="nav-item nav-link" routerLink="/homeappliance" *ngIf="isUser">Home Appliances</a>
       <a class="nav-iten nav-link" routerLink="/wishlist" *ngIf="isUser">Wishlist</a>
+      <a class="nav-item nav-link" routerLink="/cart" *ngIf="isUser">Cart</a>
       <a class="nav-item nav-link" routerLink="/profile">Profile</a>
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      
   </div>
 </nav>
 

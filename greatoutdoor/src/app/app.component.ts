@@ -26,7 +26,6 @@ export class AppComponent {
         return this.currentUser.roles[0].authority=== Role.Admin;
     }
     get isUser(){
-        console.log(this.currentUser);
         return this.currentUser.roles[0].authority===Role.User;
     }
 
