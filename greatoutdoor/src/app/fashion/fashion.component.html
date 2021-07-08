@@ -1,1 +1,24 @@
-<p>fashion works!</p>
+<div class="container" *ngIf=allProduct>
+    <div class="row mt-4">
+      <h5>All Products</h5>
+        <div class="col-md-6 col-lg-4 col-sm-12 mt-3 mb-3" *ngFor="let p of allProducts">
+            <div class="card" >
+              <h5 class="card-header text-center bg-dark text-light">{{p.productName}}</h5>
+                <div class="card-body">
+                  <img src={{p.image}} class="card-img-top" alt="..." width="150" height="300" style="border:1px solid black">
+                  
+                  <div class="card-text">
+                    id:{{p.productId}}<br>
+                    Price : {{p.price}}<br>
+                    Color : {{p.colour}}<br>
+                    Quantity : {{p.quantity}}<br>
+                    Manufacturer : {{p.manufacturer}}<br>
+                    Specification :{{p.specification}}<br>
+                  </div>
+                    <button class="btn btn-success btn-sm" (click)="addToCart(p)">Add To Cart</button>&nbsp;
+                    <button class="btn btn-success btn-sm" (click)="addProductToWishLit(p)" >Add To WishList</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
