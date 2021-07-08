@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
@@ -62,5 +61,9 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+    navigateToRegister(){
+        this.router.navigate(['/signup']);
+      }
 
 }

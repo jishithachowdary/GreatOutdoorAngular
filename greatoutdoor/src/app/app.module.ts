@@ -17,10 +17,18 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user/user.component';
-import { ProductComponent } from './product/product.component';
+import { ProductComponent } from './product details/product/product.component';
 import { OrderComponent } from './order/order.component';
 import { ReportComponent } from './report/report.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminFashionComponent } from './product details/product category/admin-fashion/admin-fashion.component';
+import { AdminElectronicsComponent } from './product details/product category/admin-electronics/admin-electronics.component';
+import { AdminHomeAppliancesComponent } from './product details/product category/admin-home-appliances/admin-home-appliances.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +46,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ProductComponent,
     OrderComponent,
     ReportComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegisterComponent,
+    AdminFashionComponent,
+    AdminElectronicsComponent,
+    AdminHomeAppliancesComponent
   ],
   imports: [
     BrowserModule,

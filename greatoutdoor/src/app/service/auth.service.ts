@@ -15,6 +15,7 @@ export class AuthService{
     private baseUrl = 'http://localhost:8080/'; 
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    public name:string;
 
     constructor(private http: HttpClient,  private router: Router){
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -26,6 +27,7 @@ export class AuthService{
         return this.currentUserSubject.value;
     }
     login(username: string, password: string) {
+        this.name=username;
         return this.http.post<any>(this.baseUrl + 'login', 
             new User(username,'',password), {headers})
             .pipe(catchError(this.handleError),
@@ -33,7 +35,9 @@ export class AuthService{
                     // login successful if there's a jwt token in the response
                     if (user && user.token) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        // sessionStorage.setItem('currentUser', user);
+                        sessionStorage.setItem('token',"Bearer "+user.token);
+                        sessionStorage.setItem('roles',user.roles);
                         this.currentUserSubject.next(user);
                     }
     
@@ -48,9 +52,8 @@ export class AuthService{
     }
     
     signup(user: User): Observable<any>{
-        //console.log('In AuthService');
-        return this.http.post(this.baseUrl + 'signup', user, { headers, responseType: 'text'})
-                        .pipe(catchError(this.handleError));;
+        console.log('In AuthService');
+        return this.http.post<User>(this.baseUrl + 'signup', user);
     }
 
     private handleError(httpError: HttpErrorResponse) {
@@ -76,4 +79,6 @@ export class AuthService{
         // Return an observable with a user-facing error message.
         return throwError(message);
       }
+
+    
 }
