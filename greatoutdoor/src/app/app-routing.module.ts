@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
+
 import { CartComponent } from './cart/cart.component';
 import { ElectronicsComponent } from './electronics/electronics.component';
 import { FashionComponent } from './fashion/fashion.component';
 import { HomeAppliancesComponent } from './home-appliances/home-appliances.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { Role } from './model/role.model';
+
 import { OrderComponent } from './order/order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProductComponent } from './product/product.component';
+
+import { ProductComponent } from './product details/product/product.component';
+import { AdminElectronincsComponent } from './product details/productCategory/admin-electronics/admin-electronics.component';
+//import { AdminElectronincsComponent } from './product details/productCategory/admin-electronincs/admin-electronincs.component';
+import { AdminFashionComponent } from './product details/productCategory/admin-fashion/admin-fashion.component';
+import { AdminHomeAppliancesComponent } from './product details/productCategory/admin-home-appliances/admin-home-appliances.component';
+import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './report/report.component';
 import { AuthGuard } from './service/authguard.service';
+
 import { UserComponent } from './user/user.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
@@ -24,11 +31,15 @@ const routes: Routes = [
   {path:'homeappliance',component:HomeAppliancesComponent,canActivate:[AuthGuard]},
   {path:'order',component:OrderComponent,canActivate:[AuthGuard]},
   {path:'product',component:ProductComponent,canActivate:[AuthGuard]},
+  {path:'adminelectronics',component:AdminElectronincsComponent,canActivate:[AuthGuard]},
+  {path:'adminfashion',component:AdminFashionComponent,canActivate:[AuthGuard]},
+  {path:'adminhomeappliance',component:AdminHomeAppliancesComponent,canActivate:[AuthGuard]},
   {path:'report',component:ReportComponent,canActivate:[AuthGuard]},
   {path:'wishlist',component:WishlistComponent,canActivate:[AuthGuard]},
   {path:'user',component:UserComponent,canActivate:[AuthGuard]},
   {path:'profile',component:ProductComponent,canActivate:[AuthGuard]},
   {path: 'login',component: LoginComponent},
+  {path:'signup',component:RegisterComponent},
   {path:'**',component:PageNotFoundComponent}
 ];
 

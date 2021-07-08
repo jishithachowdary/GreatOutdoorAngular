@@ -1,0 +1,313 @@
+<h1 style="text-align: center;">All Products</h1>
+<div class="row">
+  <div class="col-sm-6, col-md-6">
+      <h5>Search Product Name</h5>
+      <form [formGroup]="productSearchForm" (ngSubmit)="onSearch()">
+          <div class="form-group">
+              <label for="name">Enter Id to be Searched</label>
+              <input type="text" class="form-control" id="name"
+              formControlName="name">       
+                  <div class="alert alert-danger" *ngIf="productSearchForm.get('name').invalid 
+                      && productSearchForm.get('name').touched">
+                      Please enter a valid producy name
+                  </div>    
+                <button type="submit" [disabled]="productSearchForm.invalid" class="btn btn-success">Search</button>                                         
+          </div>
+      </form> 
+  </div>
+  <div class="col-sm-6, col-md-6" *ngIf=isSearched>
+    <div class="row">
+        <h2>Product Details</h2>
+        <div class="col-md-6 col-lg-4 col-sm-12 mt-3 mb-3" *ngFor="let p of allProducts">
+          <div class="card" >
+            <h5 class="card-header text-center bg-dark text-light">{{p.productName}}</h5>
+              <div class="card-body">
+                <img src={{p.image}} class="card-img-top" alt="..." width="150" height="300" style="border:1px solid black">
+                <div class="card-text">
+                  id:{{p.productId}}<br>
+                  Price : {{p.price}}<br>
+                  Color : {{p.colour}}<br>
+                  Quantity : {{p.quantity}}<br>
+                  Manufacturer : {{p.manufacturer}}<br>
+                  Specification :{{p.specification}}<br>
+                </div>
+                  <button class="btn btn-success btn-sm" (click)="onClickUpdate(p.productId)"
+                data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
+              </div>
+            </div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="row"> 
+    <div class="col-sm-6, col-md-6">
+        <div class="alert alert-danger" *ngIf="errorMsg">
+            <p>{{ errorMsg }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" >
+  <div class="row mt-4">
+    <h5>Add New Product</h5>
+    <button class="btn btn-success btn-sm" 
+      data-bs-toggle="modal" data-bs-target="#addModal">Add Product</button>
+  </div>
+</div>
+
+<div class="container" *ngIf=allProduct>
+    <div class="row mt-4">
+      <h5>All Products</h5>
+        <div class="col-md-6 col-lg-4 col-sm-12 mt-3 mb-3" *ngFor="let p of allProducts">
+            <div class="card" >
+              <h5 class="card-header text-center bg-dark text-light">{{p.productName}}</h5>
+                <div class="card-body">
+                  <img src={{p.image}} class="card-img-top" alt="..." width="150" height="300" style="border:1px solid black">
+                  
+                  <div class="card-text">
+                    id:{{p.productId}}<br>
+                    Price : {{p.price}}<br>
+                    Color : {{p.colour}}<br>
+                    Quantity : {{p.quantity}}<br>
+                    Manufacturer : {{p.manufacturer}}<br>
+                    Specification :{{p.specification}}<br>
+                  </div>
+                    <button class="btn btn-success btn-sm" (click)="onClickUpdate(p.productId)"
+                  data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="updateModal" data-bs-backdrop="static" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Product</h5>
+        <button type="button" class="close" #closebutton data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+      <form class="form-sm" [formGroup]="productUpdateForm" (ngSubmit)="onSubmit()">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="Id">Product Id</label>
+          <input type="text" class="form-control" id="Id"
+            formControlName="Id">
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" id="name"
+            formControlName="name">
+          <div class="alert alert-danger" *ngIf="f.name.invalid
+            && f.name.touched">
+            <div *ngIf="f.name.errors.required">
+              Product Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price"
+            formControlName="price">
+          <div class="alert alert-danger" *ngIf="f.price.invalid
+            && f.price.touched">
+            <div *ngIf="f.price.errors.required">
+              Price is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="text" class="form-control" id="image"
+            formControlName="image">
+          <div class="alert alert-danger" *ngIf="f.image.invalid
+            && f.image.touched">
+            <div *ngIf="f.image.errors.required">
+              Image is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="text" class="form-control" id="color"
+            formControlName="color">
+          <div class="alert alert-danger" *ngIf="f.color.invalid
+            && f.color.touched">
+            <div *ngIf="f.color.errors.required">
+              Color is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" class="form-control" id="category"
+            formControlName="category">
+          <div class="alert alert-danger" *ngIf="f.category.invalid
+            && f.category.touched">
+            <div *ngIf="f.category.errors.required">
+              Category is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="text" class="form-control" id="quantity"
+            formControlName="quantity">
+          <div class="alert alert-danger" *ngIf="f.quantity.invalid
+            && f.quantity.touched">
+            <div *ngIf="f.quantity.errors.required">
+              Quantity is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="manufacturer">Manfacturer</label>
+          <input type="text" class="form-control" id="manufacturer"
+            formControlName="manufacturer">
+          <div class="alert alert-danger" *ngIf="f.manufacturer.invalid
+            && f.manufacturer.touched">
+            <div *ngIf="f.manufacturer.errors.required">
+              Manufacturer is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="specification">Specification</label>
+          <input type="text" class="form-control" id="specification"
+            formControlName="specification">
+          <div class="alert alert-danger" *ngIf="f.specification.invalid
+            && f.specification.touched">
+            <div *ngIf="f.specification.errors.required">
+              Specification is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="addModal" data-bs-backdrop="static" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Product</h5>
+        <button type="button" class="close" #closebutton data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+      <form class="form-sm" [formGroup]="productAddForm" (ngSubmit)="onAdd()">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="Id">Product Id</label>
+          <input type="text" class="form-control" id="Id"
+            formControlName="Id">
+            <div class="alert alert-danger" *ngIf="f.Id.invalid
+            && f.Id.touched">
+            <div *ngIf="f.Id.errors.required">
+              Product Id is required.
+            </div>
+          </div>
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" id="name"
+            formControlName="name">
+          <div class="alert alert-danger" *ngIf="f.name.invalid
+            && f.name.touched">
+            <div *ngIf="f.name.errors.required">
+              Product Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price"
+            formControlName="price">
+          <div class="alert alert-danger" *ngIf="f.price.invalid
+            && f.price.touched">
+            <div *ngIf="f.price.errors.required">
+              Price is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="text" class="form-control" id="image"
+            formControlName="image">
+          <div class="alert alert-danger" *ngIf="f.image.invalid
+            && f.image.touched">
+            <div *ngIf="f.image.errors.required">
+              Image is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="text" class="form-control" id="color"
+            formControlName="color">
+          <div class="alert alert-danger" *ngIf="f.color.invalid
+            && f.color.touched">
+            <div *ngIf="f.color.errors.required">
+              Color is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" class="form-control" id="category"
+            formControlName="category">
+          <div class="alert alert-danger" *ngIf="f.category.invalid
+            && f.category.touched">
+            <div *ngIf="f.category.errors.required">
+              Category is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="text" class="form-control" id="quantity"
+            formControlName="quantity">
+          <div class="alert alert-danger" *ngIf="f.quantity.invalid
+            && f.quantity.touched">
+            <div *ngIf="f.quantity.errors.required">
+              Quantity is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="manufacturer">Manfacturer</label>
+          <input type="text" class="form-control" id="manufacturer"
+            formControlName="manufacturer">
+          <div class="alert alert-danger" *ngIf="f.manufacturer.invalid
+            && f.manufacturer.touched">
+            <div *ngIf="f.manufacturer.errors.required">
+              Manufacturer is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="specification">Specification</label>
+          <input type="text" class="form-control" id="specification"
+            formControlName="specification">
+          <div class="alert alert-danger" *ngIf="f.specification.invalid
+            && f.specification.touched">
+            <div *ngIf="f.specification.errors.required">
+              Specification is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      <div *ngIf="isadded" style="text-align: center; color: blue;">
+        <p>product added</p>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
