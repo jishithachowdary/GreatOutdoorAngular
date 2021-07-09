@@ -22,11 +22,10 @@ import { OrderComponent } from './order/order.component';
 import { ReportComponent } from './report/report.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
-import { AdminFashionComponent } from './product details/productCategory/admin-fashion/admin-fashion.component';
+import { AdminFashionComponent } from './product details/product category/admin-fashion/admin-fashion.component';
+import { AdminElectronicsComponent } from './product details/product category/admin-electronics/admin-electronics.component';
+import { AdminHomeAppliancesComponent } from './product details/product category/admin-home-appliances/admin-home-appliances.component';
 
-
-import { AdminHomeAppliancesComponent } from './product details/productCategory/admin-home-appliances/admin-home-appliances.component';
-import { AdminElectronincsComponent } from './product details/productCategory/admin-electronics/admin-electronics.component';
 
 
 
@@ -51,7 +50,8 @@ import { AdminElectronincsComponent } from './product details/productCategory/ad
     PageNotFoundComponent,
     RegisterComponent,
     AdminFashionComponent,
-    AdminElectronincsComponent,
+
+    AdminElectronicsComponent,
     AdminHomeAppliancesComponent
   ],
   imports: [

@@ -12,10 +12,11 @@ import { OrderComponent } from './order/order.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { ProductComponent } from './product details/product/product.component';
-import { AdminElectronincsComponent } from './product details/productCategory/admin-electronics/admin-electronics.component';
-//import { AdminElectronincsComponent } from './product details/productCategory/admin-electronincs/admin-electronincs.component';
-import { AdminFashionComponent } from './product details/productCategory/admin-fashion/admin-fashion.component';
-import { AdminHomeAppliancesComponent } from './product details/productCategory/admin-home-appliances/admin-home-appliances.component';
+
+import { AdminElectronicsComponent } from './product details/product category/admin-electronics/admin-electronics.component';
+import { AdminFashionComponent } from './product details/product category/admin-fashion/admin-fashion.component';
+import { AdminHomeAppliancesComponent } from './product details/product category/admin-home-appliances/admin-home-appliances.component';
+
 import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './report/report.component';
 import { AuthGuard } from './service/authguard.service';
@@ -31,7 +32,9 @@ const routes: Routes = [
   {path:'homeappliance',component:HomeAppliancesComponent,canActivate:[AuthGuard]},
   {path:'order',component:OrderComponent,canActivate:[AuthGuard]},
   {path:'product',component:ProductComponent,canActivate:[AuthGuard]},
+
   {path:'adminelectronics',component:AdminElectronincsComponent,canActivate:[AuthGuard]},
+
   {path:'adminfashion',component:AdminFashionComponent,canActivate:[AuthGuard]},
   {path:'adminhomeappliance',component:AdminHomeAppliancesComponent,canActivate:[AuthGuard]},
   {path:'report',component:ReportComponent,canActivate:[AuthGuard]},

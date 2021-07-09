@@ -15,6 +15,7 @@ export class AuthService{
     private baseUrl = 'http://localhost:8080/'; 
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    public name:string;
 
     constructor(private http: HttpClient,  private router: Router){
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -26,6 +27,7 @@ export class AuthService{
         return this.currentUserSubject.value;
     }
     login(username: string, password: string) {
+        this.name=username;
         return this.http.post<any>(this.baseUrl + 'login', 
             new User(username,'',password), {headers})
             .pipe(catchError(this.handleError),
