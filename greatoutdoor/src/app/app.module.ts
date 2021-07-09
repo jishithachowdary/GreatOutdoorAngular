@@ -30,6 +30,7 @@ import { AdminHomeAppliancesComponent } from './product details/product category
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { AdminHomeAppliancesComponent } from './product details/product category
     PageNotFoundComponent,
     RegisterComponent,
     AdminFashionComponent,
+
     AdminElectronicsComponent,
     AdminHomeAppliancesComponent
   ],
